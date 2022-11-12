@@ -18,21 +18,33 @@
 
 <body>
 
-
     <script>
         let a = prompt('请输入第一个数');
         let b = prompt('请输入第二个数');
         // document.write(a > b ? a : b);
         let c = a > b ? a : b;
         alert(`你输入的的两个数中最大的是${c}`);
-        document.write(`你输入的的两个数中最大的是${c} <br> 1234`);
+        document.write(`你输入的的两个数中最大的是${c} <br> 1234 <br>`);
         console.log(`你输入的的两个数中最大的是${c}`);
 
-        let array = [1, 2, 3, 4, 5];
-        array.push(6); // 添加到末尾
+        let array = [100, 200, 300, 400, 500];
+        // let array = new Array(5);// 动态数组创建
+        array.push(600); // 添加到末尾
         array.unshift(0); // 在开头添加
         array.pop(); // 删除最后一个
         array.shift() // 删除第一个
+        let res1 = array.slice(0, 3) // 将0，1，2三个元素拿出来组成一个新的数组，原数组不改变
+        let res2 = array.concat(res1) // 将array数组和res1数组合并返回结果给res2，原本数组不改变
+            //冒泡排序
+        for (let i = 0; i < array.length - 1; i++) {
+            for (let j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    let temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
     </script>
 </body>
 
