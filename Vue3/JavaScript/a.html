@@ -17,21 +17,21 @@
 </head>
 
 <body>
-    <button>click</button>
+    <button>click</button><br>
     <script>
-        let a = prompt('请输入第一个数');
-        let b = prompt('请输入第二个数');
-        // document.write(a > b ? a : b);
-        let c = a > b ? a : b;
-        alert(`你输入的的两个数中最大的是${c}`);
-        document.write(`你输入的的两个数中最大的是${c} <br> 1234 <br>`);
-        console.log(`你输入的的两个数中最大的是${c}`);
+        let a = prompt('请输入第一个数')
+        let b = prompt('请输入第二个数')
+            // document.write(a > b ? a : b)
+        let c = a > b ? a : b
+        alert(`你输入的的两个数中最大的是${c}`)
+        document.write(`你输入的的两个数中最大的是${c} <br> 1234 <br>`)
+        console.log(`你输入的的两个数中最大的是${c}`)
 
-        let array = [100, 200, 300, 400, 500];
-        // let array = new Array(5);// 动态数组创建
-        array.push(600); // 添加到末尾
-        array.unshift(0); // 在开头添加
-        array.pop(); // 删除最后一个
+        let array = [100, 200, 300, 400, 500]
+            // let array = new Array(5)// 动态数组创建
+        array.push(600) // 添加到末尾
+        array.unshift(0) // 在开头添加
+        array.pop() // 删除最后一个
         array.shift() // 删除第一个
         let res1 = array.slice(0, 3) // 将0，1，2三个元素拿出来组成一个新的数组，原数组不改变
         let res2 = array.concat(res1) // 将array数组和res1数组合并返回结果给res2，原本数组不改变
@@ -46,15 +46,32 @@
             }
         }
 
-        let btn = document.querySelector('button');
-        // 1
+        let btn = document.querySelector('button')
+            // 1
         btn.onclick = function() {
                 alert('你点击了按钮')
             }
-            // 1
+            // 2
         btn.addEventListener("click", function() {
             alert('你点击了按钮')
         })
+
+        //----------------------------------------------------------------------------------------------------------------------------
+        // 对象(包括 属性 和 方法)
+        // 多个属性 或者 方法之间用 逗号 分割
+        // 使用对象里面的属性用  1，对象.属性  或者   2，对象['属性名']
+        // 使用对象里面的
+        let person = {
+            uname: 'CL',
+            age: 18,
+            sex: '男',
+            sayhi: function() {
+                console.log('hi~~')
+            }
+        }
+        console.log(person.age)
+        console.log(person['age'])
+        person.sayhi()
     </script>
 </body>
 
