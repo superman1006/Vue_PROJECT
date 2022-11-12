@@ -17,7 +17,7 @@
 </head>
 
 <body>
-
+    <button>click</button>
     <script>
         let a = prompt('请输入第一个数');
         let b = prompt('请输入第二个数');
@@ -45,6 +45,16 @@
                 }
             }
         }
+
+        let btn = document.querySelector('button');
+        // 1
+        btn.onclick = function() {
+                alert('你点击了按钮')
+            }
+            // 1
+        btn.addEventListener("click", function() {
+            alert('你点击了按钮')
+        })
     </script>
 </body>
 
