@@ -2,7 +2,7 @@
  * @Author: superman1006 1402788264@qq.com
  * @Date: 2022-11-12 14:11:15
  * @LastEditors: superman1006 1402788264@qq.com
- * @LastEditTime: 2022-11-12 14:51:40
+ * @LastEditTime: 2022-11-12 17:39:44
  * @FilePath: \Vue_PROJECT\Vue3\JavaScript\a.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AElet
 -->
@@ -60,7 +60,8 @@
         // 对象(包括 属性 和 方法)
         // 多个属性 或者 方法之间用 逗号 分割
         // 使用对象里面的属性用  1，对象.属性  或者   2，对象['属性名']
-        // 使用对象里面的
+        // 使用对象里面的方法和外面的一样
+        // 对象的属性和方法可以在对象外直接创建
         let person = {
             uname: 'CL',
             age: 18,
@@ -72,6 +73,15 @@
         console.log(person.age)
         console.log(person['age'])
         person.sayhi()
+            // 遍历对象
+        for (const key in person) {
+            // 此时 key === 'uname'
+            // 此时key是一个变量，不能用person.key调用
+            console.log(key) //带字符串的属性
+            console.log(typeof key)
+                // console.log(person.key) 错误的
+            console.log(person[key]) // 正确的
+        }
     </script>
 </body>
 
