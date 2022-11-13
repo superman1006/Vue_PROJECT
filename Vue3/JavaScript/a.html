@@ -2,7 +2,7 @@
  * @Author: superman1006 1402788264@qq.com
  * @Date: 2022-11-12 14:11:15
  * @LastEditors: superman1006 1402788264@qq.com
- * @LastEditTime: 2022-11-12 17:39:44
+ * @LastEditTime: 2022-11-12 21:36:45
  * @FilePath: \Vue_PROJECT\Vue3\JavaScript\a.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AElet
 -->
@@ -27,14 +27,14 @@
         document.write(`你输入的的两个数中最大的是${c} <br> 1234 <br>`)
         console.log(`你输入的的两个数中最大的是${c}`)
 
-        let array = [100, 200, 300, 400, 500]
+        const array = [100, 200, 300, 400, 500]
             // let array = new Array(5)// 动态数组创建
         array.push(600) // 添加到末尾
         array.unshift(0) // 在开头添加
         array.pop() // 删除最后一个
         array.shift() // 删除第一个
-        let res1 = array.slice(0, 3) // 将0，1，2三个元素拿出来组成一个新的数组，原数组不改变
-        let res2 = array.concat(res1) // 将array数组和res1数组合并返回结果给res2，原本数组不改变
+        const res1 = array.slice(0, 3) // 将0，1，2三个元素拿出来组成一个新的数组，原数组不改变
+        const res2 = array.concat(res1) // 将array数组和res1数组合并返回结果给res2，原本数组不改变
             //冒泡排序
         for (let i = 0; i < array.length - 1; i++) {
             for (let j = 0; j < array.length - i - 1; j++) {
@@ -66,7 +66,7 @@
             uname: 'CL',
             age: 18,
             sex: '男',
-            sayhi: function() {
+            sayhi() {
                 console.log('hi~~')
             }
         }
