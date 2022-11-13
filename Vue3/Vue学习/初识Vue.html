@@ -1,0 +1,50 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-13 12:58:06
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-13 15:37:11
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\初识Vue.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初识Vue</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备一个容器 -->
+    <!-- 要将容器中变化的内容交给Vue处理 -->
+    <div id="root">
+        <!-- 插值语法，用{{}}包裹Vue中的数据和js表达式(有返回值的js代码) -->
+        <!-- name.toUpperCase()方法可以将内容大写 -->
+        <h1>插值语法(管理标签体)</h1>
+        <h2>hello,{{name.toUpperCase()}}</h2>
+        <hr>
+        <h1>指令语法(管理标签属性)</h1>
+        <a v-bind:href='url'>点我去百度1~</a>
+        <hr>
+        <a :href='url'>点我去百度2~</a>
+        <!-- v-bind可以省略 -->
+
+    </div>
+    <script type="text/javascript">
+        // 创建Vue实例(一个Vue实例只能接管一个容器，反之一样)
+        // Vue实例以后会配合很多组件一起使用
+        new Vue({
+            el: "#root", //el指定当前Vue实例为哪一个容器服务，值通常为CSS选择器字符串.(如果容器的标识是class="root",就要用 el: ".root")
+            data: {
+                name: 'cl',
+                url: 'https://www.baidu.com/'
+            }
+        })
+    </script>
+</body>
+
+</html>

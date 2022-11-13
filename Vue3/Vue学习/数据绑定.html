@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备容器 -->
+    <div id="root1">
+        单向数据绑定<input type="text" v-bind:value="name"><br /> 双向数据绑定
+        <input type="text" v-model:value="name">
+        <input type="text" v-model="name">
+        <!-- v-model默认接收value值，所以可以简写成 v-model="name"-->
+        <!-- v-model只能用在表单类元素上（输入类元素） -->
+
+    </div>
+
+    <script type="text/javascript">
+        // 创建Vue实例
+        new Vue({
+            el: "#root1",
+            data: {
+                name: 'cl'
+            }
+        })
+    </script>
+</body>
+
+</html>
