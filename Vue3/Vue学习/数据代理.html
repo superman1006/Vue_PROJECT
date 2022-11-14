@@ -1,3 +1,27 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-13 18:15:24
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-14 14:37:02
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\数据代理.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-13 18:15:24
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-14 12:01:49
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\数据代理.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-13 18:15:24
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-14 11:41:03
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\数据代理.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,10 +30,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
 </head>
 
 <body>
-    <script>
+
+    <div id="root">
+        <input type="text" v-model="name">
+    </div>
+
+    <script type="text/javascript">
         let obj1 = {
             x: 100
         }
@@ -24,6 +54,20 @@
                 obj1.x = value
             }
         })
+
+
+        // 创建Vue实例
+        const vm = new Vue({
+                el: "#root",
+                data: {
+                    name: 'cl123456789'
+                }
+            })
+            // 上面创建Vue实例的时候里面的data的数据都是用ObjectdefineProperty()创建的(打开了所有的配置项)
+            // 这里创建Vue实例的时候，其实不会真实的创建一个data对象，而是Vue直接将data里的的数据放到Vue实例中的Vue._data中
+            // 将所有数据放入_data之后，Vue实例会将_data中的所有数据存一份在Vue实例中！,这个过程就叫做数据代理！
+            // 这样就可以直接 {{name}}来访问，而不是用 {{_data.name}}来访问
+            // 在外面修改name实际上是直接修改_data中的数据
     </script>
 
 </body>

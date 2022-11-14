@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>hello{{name}}</h2>
+        <!-- v-on:click="showInfo" 是给这个button绑定一个点击事件，当用户点击的时候Vue会调用名为showInfo的函数 -->
+        <button v-on:click="showInfo1">click me1</button>
+        <!-- 简写是直接用 @ 代替 v-on:-->
+        <!-- 需要传参数就写括号，不需要就不写 -->
+        <!-- 为了让函数能够接收到点击事件event，在函数后面传入参数$event -->
+        <button @click="showInfo2($event,66)">click me2</button>
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'cl'
+            },
+            methods: {
+                // 这里面的函数showInfo1和showInfo2 都直接存入了Vue实例中
+                // 但是不会做数据代理(getter和 setter)，因为方法不需要被用户修改或者直接访问，所以不需要将Vue实例中的showInfo1和methods里的showInfo1进行绑定
+                showInfo1(event) {
+                    console.log(event) //接收到第一个参数永远是这个点击事件(PointEvent)
+                    console.log(event.target.innerText) // 输出点击事件的按钮的文本内容
+                    alert(`hello,${this.name}1`) //js里面的模板语法
+                },
+                showInfo2(event, number) {
+                    console.log(event) //接收到第一个参数永远是这个点击事件(PointEvent)
+                    console.log(event.target.innerText)
+                    console.log(number)
+                    alert(`hello,${this.name}2`) //js里面的模板语法
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
