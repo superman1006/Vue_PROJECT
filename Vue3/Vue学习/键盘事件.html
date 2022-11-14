@@ -1,0 +1,60 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-14 16:19:54
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-14 21:41:26
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\键盘事件.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>hello {{name}}</h2>
+        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+        <!-- 当你想捕获的按键像Capslock这种有两个单词组成的要用全部小写并且两个单词之间要用 - 分隔开 -->
+        <!-- <input type="text" placeholder="按下回车提示输入" @keyup.caps-lock="showInfo"> -->
+        <!-- 还要注意如果是捕获tab，(ctrl，shift，meta)键要用 @keydown.tab,因为tab键功能就是keyup的时候切走光标，如果切走了那就捕获不到了所以要 @keydown -->
+
+        <!--     常见的用户别名
+            enter ：回车
+            delete：删除（delete和backspace都可以）
+            esc   : 推出
+            space ：空格
+            tab   ：换行（特殊，必须配合keydown）
+            up    ：上
+            down  ：下
+            left  ：左
+            right ：右
+        -->
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'cl'
+            },
+            methods: {
+                showInfo(e) {
+                    // console.log(e.keyCode) //按键的编码
+                    /* if (e.keyCode === 13) {
+                        console.log(e.target.value)
+                    } */
+                    console.log(e.target.value)
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
