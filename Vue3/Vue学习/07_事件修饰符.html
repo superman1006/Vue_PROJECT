@@ -2,7 +2,7 @@
  * @Author: superman1006 1402788264@qq.com
  * @Date: 2022-11-14 15:01:03
  * @LastEditors: superman1006 1402788264@qq.com
- * @LastEditTime: 2022-11-14 15:01:15
+ * @LastEditTime: 2022-11-14 16:05:05
  * @FilePath: \Vue_PROJECT\Vue3\Vue学习\07_事件修饰符
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -15,16 +15,71 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+    <style>
+        * {
+            /* 通配符：让所有元素之间都有20px间距 */
+            margin-top: 20px;
+        }
+        
+        .demo1 {
+            height: 50px;
+            background-color: cadetblue;
+        }
+        
+        .box1 {
+            padding: 5px;
+            background-color: skyblue;
+        }
+        
+        .box2 {
+            padding: 5px;
+            background-color: orange;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <h2>hello,{{name}}</h2>
+        <!-- prevent:阻止默认事件(常用) -->
+        <a href="https://www.baidu.com/" @click.prevent="showInfo()">click me</a>
+
+        <!-- stop:阻止事件冒泡(常用) -->
+        <div class="demo1" @click="showInfo">
+            <!-- 这样只会弹窗一下，外层那一个不会弹窗 -->
+            <button @click.stop="showInfo">点我</button>
+        </div>
+
+        <!-- once:事件只触发一次(常用) -->
+        <button @click.once="showInfo">点我</button>
+
+        <!-- 点击之后会经过事件捕获和是事件冒泡，事件捕获是由外向内，事件冒泡是由内向外
+             现在不想让点击div2之后冒泡到div1
+        -->
+        <div class="box1" @click.capture="showMes(1)">
+            div1
+            <div class="box2" @click="showMes(2)">
+                div2
+            </div>
+        </div>
+    </div>
+
 
     <script type="text/javascript">
         const vm = new Vue({
             el: '#app',
-            data: {},
-            methods: {}
+            data: {
+                name: 'cl'
+            },
+            methods: {
+                showInfo(e) {
+                    alert('lalalala')
+                        // e.preventDefault()
+                },
+                showMes(mes) {
+                    console.log(mes)
+                }
+            }
         });
     </script>
 </body>
