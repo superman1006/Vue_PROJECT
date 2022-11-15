@@ -1,0 +1,47 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-15 14:53:40
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-15 15:28:38
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\12_样式绑定.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+    <style>
+        .basic {
+            height: 100px;
+            width: 400px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="basic">test</div>
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            //数据
+            data: {},
+            //计算属性
+            computed: {},
+            //方法
+            methods: {},
+            //监视属性
+            watch: {}
+        });
+    </script>
+</body>
+
+</html>
