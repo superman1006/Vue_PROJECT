@@ -2,7 +2,7 @@
  * @Author: superman1006 1402788264@qq.com
  * @Date: 2022-11-15 16:54:02
  * @LastEditors: superman1006 1402788264@qq.com
- * @LastEditTime: 2022-11-15 17:04:26
+ * @LastEditTime: 2022-11-15 18:04:03
  * @FilePath: \Vue_PROJECT\Vue3\Vue学习\13_条件渲染.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -19,8 +19,31 @@
 
 <body>
     <div id="app">
-        <!-- v-show 控制是否展示,在底层是修改了style="display:none;"-->
+        <!-- 通常推荐使用v-show而不是if -->
+
+        <!-- v-show 控制是否展示（其实标签还在，只是隐藏了）,在底层是修改了style="display:none;"-->
         <div v-show=true>{{name}}</div>
+
+        <!-- v-if 控制是否展示（不是隐藏，而是完全没有这个标签）-->
+        <div v-if="flase">{{name}}</div>
+
+        <!-- 如果第一个成立=那么后面两个是不会走的 -->
+        <div> n = {{n}}</div>
+        <button @click="n++">点我让n+1</button>
+
+        <!-- 整个流程必须在一起，不能被打断！！！ -->
+        <div v-if="n===1">Angular</div>
+        <div v-else-if="n===2">React</div>
+        <div v-else-if="n===3">Vue</div>
+        <div v-else>hahahah</div>
+
+        <!-- 如果要输出多个，可以在外面包裹一个div然后对外面的div进行判断，但是这种方法已经改变了DOM结构，在CSS处理的时候还要重新改代码 -->
+        <!-- 所以我们使用<template>，这个标签可以帮助判断，并且判断后是没有改变结构的，所以经常使用，但是使用的时候必须要配合v-if 而不能俄国v-show -->
+        <template v-if="true">
+            <h1>11111</h1>
+            <h1>22222</h1>
+            <h1>33333</h1>
+        </template>
     </div>
 
     <script type="text/javascript">
@@ -29,13 +52,8 @@
             //数据
             data: {
                 name: 'chen-lv',
-            },
-            //计算属性
-            computed: {},
-            //方法
-            methods: {},
-            //监视属性
-            watch: {}
+                n: 0
+            }
         });
     </script>
 </body>
