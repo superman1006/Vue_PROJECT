@@ -1,0 +1,64 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-15 18:05:54
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-15 18:25:06
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\14_列表渲染.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 一个无序列表 -->
+        <ul>
+            <!-- 一定要在后面加一个:key="person.id" ,这是将key动态绑定给person.id，这是标准结构，在React里这是必须的-->
+            <li v-for="person in persons" :key="person.id">
+                {{person.id}}-{{person.name}}-{{person.age}}
+            </li>
+            <hr>
+
+        </ul>
+        <ul>
+            <!-- 默认会接受两个值，一个是对象，第二个是对象的索引 -->
+            <li v-for="(p,index) in persons" :key="p.index">
+                {{p.id}}-{{p.name}}-{{p.age}}-{{index}}
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            //数据
+            data: {
+                persons: [{
+                    id: '001',
+                    name: 'chen-lv',
+                    age: '19'
+                }, {
+                    id: '002',
+                    name: 'zhang-y-y',
+                    age: '18'
+                }]
+            },
+            //计算属性
+            computed: {},
+            //方法
+            methods: {},
+            //监视属性
+            watch: {}
+        });
+    </script>
+</body>
+
+</html>

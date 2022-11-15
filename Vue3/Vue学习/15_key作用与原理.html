@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+    <!-- https://www.bilibili.com/video/BV1Zy4y1K7SH/?p=30&spm_id_from=pageDriver&vd_source=3448ca9ea0d7c728328a795418a36843 -->
+</head>
+
+<body>
+    <!-- 当不使用:key=""时，Vue会默认使用index（0，1，2...）来作为key -->
+    <!--
+        但是用:key=""时
+        创建对象时，会创建初始虚拟DOM(Vnodes)，然后转成真实DOM
+        当修改对象时，会创建一个新的虚拟DOM(Vnodes)，然后执行diff()对比方法，对比之前的那个虚拟DOM和现在新创建的DOM
+        首先匹配对象里面的key值，
+                    如果新的虚拟DOM中的key值存在：则判断两者内容是否相同
+                                    相同的地方：则直接从旧的真实DOM调用而不是从新的虚拟DOM调用
+                                    不同的地方：则从新的虚拟创建到新的真实DOM
+                    如果不存在：则直接从新的虚拟DOM调用并创建到新的真实DOM
+    -->
+    <!--
+        当你的对象的数据修改时会改变原本数据的顺序时（例如在列表前面插入数据），使用:key="p.id" ，若使用index则会导致效率过低，因为所有数据都是重新根据新的虚拟DOM生成的
+        当你的对象的数据修改时不会修改原有数据的顺序时，使用:key="p.id" 和 :key="index"都可以
+    -->
+</body>
+
+</html>
