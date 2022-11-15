@@ -1,0 +1,53 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-15 10:16:37
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-15 10:17:40
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\09_计算属性.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        姓：{{firstName}} <br>名: {{secondName}} <br>全名：{{fullName}}
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'chen',
+                secondName: 'lv'
+            },
+            computed: {
+                fullName: {
+                    // 初次读取fullname和 当子属性被修改时则会调用getter
+                    get() {
+                        return this.firstName + '-' + this.secondName
+                    },
+                    set(value) {
+                        const arr = value.split('-')
+                        this.firstName = arr[0]
+                        this.secondName = arr[1]
+                    }
+                },
+                //简写（只有当fullname不需要被修改的时候才可以简写，否则还是要写setter和 getter ）
+                // fullName() {
+                //     return this.firstName + '-' + this.secondName
+                // }
+            }
+        });
+    </script>
+</body>
+
+</html>
