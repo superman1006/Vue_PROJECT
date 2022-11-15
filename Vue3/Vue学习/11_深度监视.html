@@ -1,0 +1,56 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-15 11:41:59
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-15 11:44:22
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\11_深度监视.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{numbers.a}}</h2>
+        <button @click="numbers.a++"> a的值+1 </button>
+        <hr>
+        <h2>{{numbers.b}}</h2>
+        <button @click="numbers.b++"> b的值+1 </button>
+        <hr>
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                numbers: {
+                    a: 1,
+                    b: 1
+                }
+            },
+            computed: {},
+            methods: {},
+            watch: {
+                // 如果是深度监视，要还原最初的写法，就是在外层加 ''
+                'numbers.a': {
+                    // 不写deep:true时，必须将numbers的地址改变（numbers:{a:11}）才会执行handler()，
+                    // deep:true开启深度监视,开启之后当numbers里面的属性发生改变时也会调用handler()
+                    deep: true,
+                    handler() {
+                        console.log('a改变了')
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
