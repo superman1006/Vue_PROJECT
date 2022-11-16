@@ -1,0 +1,93 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-16 12:19:41
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-16 12:54:41
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\17_列表排序.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+</head>
+
+<body>
+    <!-- 需求，可以正常搜索关键词出列表，并且可以对产生的列表进行特定排序 -->
+    <!-- sort()会直接改变原数组 -->
+
+    <div id="app">
+        <h2>人员列表</h2>
+        <input type="text" placeholder="请输入姓名" v-model="keyword">
+        <button @click="sortType='up'">年龄升序排列</button>
+        <button @click="sortType='dowm'">年龄降序排列排列</button>
+        <button @click="sortType='null'">年龄原排列</button>
+        <hr>
+        <ul>
+            <li v-for="person in filpersons" :key="person.id">
+                {{person.id}}--{{person.name}}--{{person.age}}--{{person.sex}}
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                sortType: 'null',
+                keyword: '',
+                persons: [{
+                    id: 001,
+                    name: '马冬梅',
+                    age: 18,
+                    sex: '女'
+                }, {
+                    id: 002,
+                    name: '周冬雨',
+                    age: 19,
+                    sex: '女'
+                }, {
+                    id: 003,
+                    name: '周杰伦',
+                    age: 145,
+                    sex: '男'
+                }, {
+                    id: 004,
+                    name: '温兆伦',
+                    age: 130,
+                    sex: '男'
+                }, ],
+            },
+            computed: {
+                filpersons() {
+                    const arr = this.persons.filter((person) => {
+                        return person.name.indexOf(this.keyword) !== -1
+                    })
+                    if (this.sortType === 'null') {
+                        return arr
+                    } else {
+                        //sort()会直接改变原数组
+                        // 升序：前-后
+                        // 降序：后-前
+                        arr.sort((front, next) => {
+                            // if (this.sortType === 'up') {
+                            //     return front.age - next.age
+                            // } else { //'dowm'
+                            //     return next.age - front.age
+                            // }
+                            return this.sortType === 'up' ? front.age - next.age : next.age - front.age
+                        })
+                        return arr
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
