@@ -1,0 +1,86 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-16 09:34:53
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-16 12:18:51
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\16_列表过滤.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+    <!-- https://www.bilibili.com/video/BV1Zy4y1K7SH/?p=31&vd_source=3448ca9ea0d7c728328a795418a36843 -->
+</head>
+
+<body>
+    <div id="app">
+        <h2>人员列表</h2>
+        <input type="text" placeholder="请输入姓名" v-model="keyword">
+        <ul>
+            <li v-for="person in filpersons" :key="person.id">
+                {{person.id}}--{{person.name}}--{{person.age}}--{{person.sex}}
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        // 过滤器： 要过滤的对象.filter() ，filter不修改原数组，而是生成一个新的数组作为返回结果
+        // 括号里面写一个箭头函数(参数)=>{},并且这个函数要返回一个值
+        // a.indexOf(b) 判断a中是否包含b，若不包含则返回-1，若包含则返回b所在a中的索引  
+        // 'abc'.indexOf('b')
+        // 用 computed 比用 watch 更好
+        const vm = new Vue({
+            el: '#app',
+            //数据
+            data: {
+                keyword: '',
+                persons: [{
+                    id: 001,
+                    name: '马冬梅',
+                    age: 18,
+                    sex: '女'
+                }, {
+                    id: 002,
+                    name: '周冬雨',
+                    age: 19,
+                    sex: '女'
+                }, {
+                    id: 003,
+                    name: '周杰伦',
+                    age: 145,
+                    sex: '男'
+                }, {
+                    id: 004,
+                    name: '温兆伦',
+                    age: 130,
+                    sex: '男'
+                }, ],
+            },
+            computed: {
+                // 不在外界修改filpersons，所以直接用简写形式，内容直接时setter
+                filpersons() {
+                    return this.persons.filter((person) => {
+                        return person.name.indexOf(this.keyword) !== -1
+                    })
+                },
+            },
+            // watch: {
+            //     keyword: {
+            //         handler(newVal) {
+            //             this.persons.filter((person) => {
+            //                 return person.name.indexOf(val) !== -1
+            //             })
+            //         }
+            //     }
+            // }
+        });
+    </script>
+</body>
+
+</html>
