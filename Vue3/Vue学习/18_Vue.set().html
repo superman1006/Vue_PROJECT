@@ -1,0 +1,52 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-16 12:19:41
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-16 16:11:22
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\17_列表排序.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+    <!-- https://www.bilibili.com/video/BV1Zy4y1K7SH?p=36&spm_id_from=pageDriver&vd_source=3448ca9ea0d7c728328a795418a36843 -->
+</head>
+
+<body>
+    <!-- 需求，可以正常搜索关键词出列表，并且可以对产生的列表进行特定排序 -->
+    <!-- sort()会直接改变原数组 -->
+
+    <div id="app">
+        <div>{{student.name}}</div>
+        <div>{{student.age}}</div>
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                student: {
+                    name: 'chen-lv'
+                }
+            }
+        });
+        // Vue.set(target,key,value)  和 vm.$set(target,key,value)  的作用一样
+        // 这种Vue.set()添加是最好的！！，比 objectdefineproperty()和直接vm.student.sex = 'man'或者 vm._data.student.sex = 'man' 都好！！
+        // 因为Vue.set()可以帮你实现getter和setter以及自动数据代理，完全就和原本就写在data{}里面的一摸一样
+        // 但是Vue.set()有一个局限性：不允许让vm或者vm._data作为target，也就是不允许直接向vm加属性，但是可以向vm中的数据加属性！！
+        Vue.set(vm.student, sex, 'man')
+        vm.$set(vm.student, age, 18)
+
+        // 在 Vue中对于对象的改变的检测：用getter和setter
+        // 在 Vue中对于数组的改变的检测：只允许使用 push(),shift(),unshift(),splice(),pop(),reverse(),sort()这六个来对数组进行改变时，Vue才承认数组发生了改变，才会响应式
+        // 为什么Vue可以检测这几个方法导致数组变化？ 因为Vue继承并添加了一点东西在push()上，所以我们在Vue中使用的push()其实不是最初的数组的push而是Vue所新创建的push(0)
+    </script>
+</body>
+
+</html>
