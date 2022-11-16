@@ -2,7 +2,7 @@
  * @Author: superman1006 1402788264@qq.com
  * @Date: 2022-11-16 16:14:01
  * @LastEditors: superman1006 1402788264@qq.com
- * @LastEditTime: 2022-11-16 17:29:25
+ * @LastEditTime: 2022-11-16 18:55:50
  * @FilePath: \Vue_PROJECT\Vue3\Vue学习\20_收集表单数据.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,68 +10,97 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
 </head>
 
 <body>
-    <!-- ，表单的属性action="指定表单提交的地址"，但现在基本不用，因为可以直接用ajax将数据发到后端 -->
-    <div id="app">
-        <form>
-            <!-- 这里写的label可以将'账号'和input款作为一个整体，用户点击账号的时候也可以获得焦点-->
-            <label for="账号">账号:</label>
-            <input type="text" id="账号" v-model="account">
-            <br /><br />
-            <label for="密码">密码:</label>
-            <input type="password" id="密码" v-model="password">
+  <!-- ，表单的属性action="指定表单提交的地址"，但现在基本不用，因为可以直接用ajax将数据发到后端 -->
+  <div id="app">
+    <form @submit.prevent="demo">
+      <!-- 这里写的label可以将'账号'和input款作为一个整体，用户点击账号的时候也可以获得焦点-->
+      <label for="账号">账号:</label>
+      <!-- v-model.trim 可以将空格去掉再收集 -->
+      <input type="text" id="账号" placeholder="请输入账号" v-model.trim="userInfo.account">
+      <br /><br />
+      <label for="密码">密码:</label>
+      <input type="password" id="密码" placeholder="请输入密码" v-model="userInfo.password">
+      <label for="年龄">年龄:</label>
+      <input type="number" id="年龄" placeholder="请输入年龄" v-model.number="userInfo.password">
+      <!--
+        1，type = number 可以保证数据是number类型
+        2，v-model.number 可以将收集到的值转成number
+        ！！！这两个是尽量一起使用的!!!
+      -->
 
-            <!-- 通过name属性将两个radio作为一组，只能选择其中一个 -->
-            <br /><br /> 性别:男
-            <input type="radio" name="sex" value="男" v-model="sex"> 女
-            <input type="radio" name="sex" value="女" v-model="sex">
-            <br /><br /> 爱好: 篮球
-            <input type="checkbox"> 跳舞
-            <input type="checkbox">
-            <br /> 所属校区
-            <!-- select下拉选择框 -->
-            <select>
+      <!-- 通过name属性将两个radio作为一组，只能选择其中一个 -->
+      <br /><br />
+      性别:
+      男<input type="radio" name="sex" value="男" v-model="userInfo.sex">
+      女<input type="radio" name="sex" value="女" v-model="userInfo.sex">
+      <br /><br />
+
+      爱好:
+      <!-- checkbox不给value的花默认是 true和 false ，若给了value值则需要用数组绑定而不是字符串-->
+      篮球<input type="checkbox" v-model="userInfo.hobby" value="篮球">
+      跳舞<input type="checkbox" v-model="userInfo.hobby" value="跳舞">
+      <br />
+
+      <!-- select下拉选择框 -->
+      所属校区
+      <select v-model="userInfo.city">
         <option value="">请选择校区</option>
         <option value="大学城">大学城校区</option>
         <option value="佛山南海">佛山南海校区</option>
         <option value="汕头">汕头校区</option>
       </select>
-            <br /><br /> 其他信息:
-            <br />
-            <!--  <textarea> 多行输入 -->
-            <textarea cols="30" rows="10"></textarea>
-            <br /><br />
-            <input type="checkbox">阅读并接受
-            <a href="https://www.baidu.com">《用户协议》</a>
-            <br /><br />
-            <button @click="">commit</button>
-        </form>
-    </div>
+      <br /><br />
 
-    <script type="text/javascript">
-        const vm = new Vue({
-            el: '#app',
-            //数据
-            data: {
-                account: '',
-                password: '',
-                sex: ''
-            },
-            //计算属性
-            computed: {},
-            //方法
-            methods: {},
-            //监视属性
-            watch: {}
-        });
-    </script>
+      其他信息:
+      <br />
+      <!--  <textarea> 多行输入 -->
+      <!-- v-model.lazy 可以让失去焦点的时候在去上传数据 -->
+      <textarea cols="30" rows="10" v-model.lazy="userInfo.other"></textarea>
+      <br /><br />
+      <input type="checkbox" v-model="userInfo.agree">
+      阅读并接受<a href="https://www.baidu.com">《用户协议》</a>
+      <br /><br />
+      <!-- form中的button被点击按钮之后页面默认会重新刷新，所以需要阻止默认事件在form中写.prevent -->
+      <button>commit</button>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+    const vm = new Vue({
+      el: '#app',
+      //数据
+      data: {
+        userInfo: {
+          account: '',
+          password: '',
+          sex: '',
+          hobby: [],
+          city: '',
+          other: '',
+          agree: ''
+        }
+      },
+      //计算属性
+      computed: {},
+      //方法
+      methods: {
+        demo () {
+          //JSON.stringify(data)是ajax的东西
+          console.log(JSON.stringify(this.userInfo))
+        }
+      },
+      //监视属性
+      watch: {}
+    });
+  </script>
 </body>
 
 </html>
