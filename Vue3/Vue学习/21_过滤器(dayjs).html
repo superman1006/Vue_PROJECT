@@ -1,0 +1,73 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-17 10:11:53
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-17 10:57:14
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\21_过滤器.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+  <!-- 引入 dayjs -->
+  <script type="text/javascript" src="../Vue.js文件/dayjs.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 计算属性实现 -->
+    <h2>现在的时间是{{formatTime}}</h2>
+    <!-- methods实现 -->
+    <h2>现在的时间是{{getTime()}}</h2>
+    <!-- 过滤器 filters实现    格式: (需要过滤的内容 | 过滤器名字)-->
+    <h2>现在的时间是{{time | timeFormatter}}</h2>
+    <!-- 过滤器的第一个参数永远是time，你在()里面写的是第二个参数，也就是决定格式的字符串 -->
+    <h2>现在的时间是{{time | timeFormatter('YYYY-MM-DD')}}</h2>
+    <!-- 过滤器可以多层过滤 -->
+    <h2>现在的时间是{{time | timeFormatter('YYYY-MM-DD') | mySlice1}}</h2>
+  </div>
+
+  <script type="text/javascript">
+    Vue.filter('mySlice', function (value) {
+      return value.slice(0, 4)
+    })
+
+    const vm = new Vue({
+      el: '#app',
+      //数据
+      data: {
+        time: Date.now()//时间戳，要 number类型，而不是字符串类型
+      },
+      //计算属性
+      computed: {
+        formatTime () {
+          return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+        }
+      },
+      //方法
+      methods: {
+        getTime () {
+          return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+        }
+      },
+      //过滤器(但是这里面写的是局部过滤器，不能给不是这个vm所服务的div来用)
+      filters: {
+        // 每一个过滤器本质就是一个函数
+        timeFormatter (value, str = 'YYYY-MM-DD HH:mm:ss') {
+          return dayjs(value).format(str)
+        },
+        mySlice1 (value) {
+          return value.slice(0, 4)
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

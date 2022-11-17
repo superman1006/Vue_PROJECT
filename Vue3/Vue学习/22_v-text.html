@@ -1,0 +1,52 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-17 11:04:48
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-17 11:27:17
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\22_v-text.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+  <style>
+    [v-clock] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{name}}</h2>
+    <!-- 唯一需要注意的就是v-text的内容会完全替代标签内部的所有内容，也就是111不会显示 -->
+    <!-- 还有就是 v-text不可以解析属性里的html内容 -->
+    <h2 v-text="name">111</h2>
+    <!-- 但是v-html可以解析属性里的html内容 -->
+    <h2 v-html="name">111</h2>
+
+    <h2>--------------------------------------------------------------------------------------</h2>
+    <!-- 当Vue.js文件还没加载的时候，所有的内容都是最初的文本，未被Vue管理，所以展示的内容应该就是直接的字符串 '{{name}}'-->
+    <!-- 当Vue接管了含有v-clock的标签时，会自动把v-clock删除 -->
+    <!-- 如果再配合CSS上面的style样式，这样就可以防止 Vue未接管时出现'{{name}}' -->
+    <h2 v-clock>{{name}}</h2>
+  </div>
+
+  <script type="text/javascript">
+    const vm = new Vue({
+      el: '#app',
+      //数据
+      data: {
+        name: '<h2>chen-lv</h2>'
+      }
+    });
+  </script>
+</body>
+
+</html>
