@@ -1,0 +1,97 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-18 14:23:47
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-18 16:14:26
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\23_组件.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 3,使用组件标签 -->
+    <my-school></my-school>
+    <!-- <my-school/> 如果在Vue脚手架环境下 可以直接使用自闭和的形式写，但是在直接引用的Vue.js的环境不能这么写 -->
+    <hr>
+    <studentcpnt></studentcpnt>
+    <hr>
+    <hellocpnt></hellocpnt>
+  </div>
+
+  <script type="text/javascript">
+
+    // 组件:     1,创建   ==>  2,注册   ==>  3,使用
+
+    // school 创建组件
+    const school = Vue.extend({
+      // template 用模板字符串写 html页面内容
+      template: `
+        <div>
+          <h2>{{schoolName}}</h2>
+          <h2>{{address}}</h2>
+        </div>
+      `,
+      // el: '#app', // 组件定义时一定不要写el配置项，因为所有组件最终都要被一个vm所管理，由vm来决定为哪个容器服务
+      // data必须要使用函数式！！！
+      // 这样每一次访问data的数据时都是全新的data (这样即使一个变量接收了data的返回值，获得一个对象，我们对这个变量进行修改，但是原本的data数据永远不会变)
+      data () {
+        return {
+          schoolName: '华南师范大学',
+          address: '佛山南海'
+        }
+      }
+    })
+
+    // student 创建组件
+    const student = Vue.extend({
+      template: `
+        <div>
+          <h2>{{studentName}}</h2>
+          <h2>{{age}}</h2>
+        </div>
+      `,
+      data () {
+        return {
+          studentName: '陈律',
+          age: 18
+        }
+      }
+    })
+
+    // hello 创建组件
+    const hello = Vue.extend({
+      template: `
+        <div>
+          <h2>123456</h2>
+        </div>
+      `
+    })
+    // 全局组件所有(vm都可以用)
+    Vue.component('hellocpnt', hello,)
+
+    const vm = new Vue({
+      el: '#app',
+      // 组件
+      components: {
+        // 2,注册组件 (局部)
+        // 组件名如果是一个单词那么就开头大写后面小写，
+        // 如果多个单词:1,'my-school'(所有情况都可以用，在使用组件的时候不用加'')
+        //      2, MySchool(每一个单词的首字母大写，但是必须使用官方Vue脚手架创建项目时才可以使用，像现在直接引入Vue.js是不能使用的！！)
+        'my-school': school,
+        studentcpnt: student
+      }
+    });
+  </script>
+</body>
+
+</html>

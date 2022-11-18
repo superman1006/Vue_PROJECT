@@ -2,7 +2,7 @@
  * @Author: superman1006 1402788264@qq.com
  * @Date: 2022-11-17 11:04:48
  * @LastEditors: superman1006 1402788264@qq.com
- * @LastEditTime: 2022-11-17 11:27:17
+ * @LastEditTime: 2022-11-18 14:23:31
  * @FilePath: \Vue_PROJECT\Vue3\Vue学习\22_v-text.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -36,6 +36,18 @@
     <!-- 当Vue接管了含有v-clock的标签时，会自动把v-clock删除 -->
     <!-- 如果再配合CSS上面的style样式，这样就可以防止 Vue未接管时出现'{{name}}' -->
     <h2 v-clock>{{name}}</h2>
+
+    <h2>--------------------------------------------------------------------------------------</h2>
+    <!-- v-once代表标签的内容只会只用属性的最初值，也就是不会随着属性的更改而内容被改变 -->
+    <h2 v-once>{{n}}</h2>
+    <h2>{{n}}</h2>
+    <button @click="n++">点我n+1</button>
+
+    <h2>--------------------------------------------------------------------------------------</h2>
+    <!-- v-pre可以让Vue直接跳过该标签的解析！！，直接输出原始内容，一般用与没有插值语法和指令语法的标签里 -->
+    <h2 v-pre>Vue{{n}}</h2>
+    <h2>Vue{{n}}</h2>
+
   </div>
 
   <script type="text/javascript">
@@ -43,10 +55,14 @@
       el: '#app',
       //数据
       data: {
-        name: '<h2>chen-lv</h2>'
+        name: '<h2>chen-lv</h2>',
+        n: 1
       }
     });
   </script>
 </body>
 
 </html>
+
+<!--             p45~p52先不看               -->
+<!--             p45~p52先不看               -->

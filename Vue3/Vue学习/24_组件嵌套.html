@@ -1,0 +1,104 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-18 16:24:36
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-18 16:58:38
+ * @FilePath: \Vue_PROJECT\Vue3\Vue学习\24_组件嵌套.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 什么都不用写，都由app写了 -->
+  </div>
+
+  <script type="text/javascript">
+    // student 创建组件
+    const student = Vue.extend({
+      template: `
+        <div>
+          <h4><=我是由student写的</h4>
+          <h4>{{studentName}}</h4>
+          <h4>{{age}}</h4>
+          <h4>我是由student写的=></h4>
+        </div>
+      `,
+      data () {
+        return {
+          studentName: '陈律',
+          age: 18
+        }
+      }
+    })
+    // school 创建组件
+    const school = Vue.extend({
+      template: `
+        <div>
+          <h3><=我是由school写的</h3>
+          <h3>{{schoolName}}</h3>
+          <h3>{{address}}</h3>
+          <student></student>
+          <h3>我是由school写的=></h3>
+        </div>
+      `,
+      data () {
+        return {
+          schoolName: '华南师范大学',
+          address: '佛山南海'
+        }
+      },
+      components: {
+        student
+      }
+    })
+    // hello 创建组件
+    const hello = Vue.extend({
+      template: `
+        <div>
+          <h3><=我是由hello写的</h3>
+          <h3>我是由hello写的=></h3>
+        </div>
+      `
+    })
+    // app 创建组件
+    const app = Vue.extend({
+      template: `
+        <div>
+          <h2><=我是由app组件写的</h2>
+          <hello></hello>
+          <school></school>
+          <h2>我是由app组件写的=></h2>
+        </div>
+      `,
+      components: {
+        school,
+        hello
+      }
+    })
+    const vm = new Vue({
+      template: `
+        <div>
+          <h1><=我是由Vue写的</h1>
+          <app></app>
+          <h1>我是由Vue写的=></h1>
+        </div>
+      `,
+      el: '#app',
+      components: {
+        app
+      }
+    });
+  </script>
+</body>
+
+</html>

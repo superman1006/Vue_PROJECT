@@ -2,7 +2,7 @@
  * @Author: superman1006 1402788264@qq.com
  * @Date: 2022-11-13 16:23:33
  * @LastEditors: superman1006 1402788264@qq.com
- * @LastEditTime: 2022-11-13 17:00:02
+ * @LastEditTime: 2022-11-18 15:07:46
  * @FilePath: \Vue_PROJECT\Vue3\Vue学习\el和data的两种写法.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,39 +10,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- 引入Vue -->
-    <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 引入Vue -->
+  <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
 </head>
 
 <body>
-    <div id="root"></div>
+  <div id="root"></div>
 
-    <script type="text/javascript">
-        const v = new Vue({
-            el: '#root', //可以在Vue实例对象创建的时候挂载
-        })
-        v.$mount('#root') //需要先获取到Vue实例对象v，然后可以在外面利用v.$mount()绑定（官方叫做挂载）el
+  <script type="text/javascript">
+    const v = new Vue({
+      el: '#root', //可以在Vue实例对象创建的时候挂载
+    })
+    v.$mount('#root') //需要先获取到Vue实例对象v，然后可以在外面利用v.$mount()绑定（官方叫做挂载）el
 
 
-        new Vue({
-            el: '#root',
-            // data: {
-            //     name: 'cl'
-            // }
+    new Vue({
+      el: '#root',
+      // data: {
+      //     name: 'cl'
+      // }
 
-            //函数式写法！！！！最常用
-            data() {
-                console.log('@@@', this) //这里的this是Vue实例对象
-                return {
-                    name: 'cl'
-                }
-            }
-        })
-    </script>
+      //函数式写法！！！！最常用，在组件时必须要用函数式data
+      data () {
+        console.log('@@@', this) //这里的this是Vue实例对象
+        return {
+          name: 'cl'
+        }
+      }
+    })
+  </script>
 </body>
 
 </html>
