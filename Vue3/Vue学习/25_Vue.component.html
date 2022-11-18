@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../Vue.js文件/vue.js"></script>
+  <!-- https://www.bilibili.com/video/BV1Zy4y1K7SH?p=57&spm_id_from=pageDriver&vd_source=3448ca9ea0d7c728328a795418a36843 -->
+</head>
+
+<body>
+  <div id="app">
+    <!-- 1
+      在这里写了两行school组件,但是实际上是调用了两次 Vue.extends(),
+      每一次Vue.extends都会调用 var Sub = new VueComponent(options)生成一个全新的对象
+    -->
+    <school></school>
+    <school></school>
+
+
+
+    <!-- 2
+      在组件配置(也就是extend()括号中的内容)中的this是VueComponent实例对象,也就是那个Sub,我们称这个实例对象为 vc !
+      和 vm一样,data中的数据也通过数据代理放在了 vc 身上,同样也有getter和setter
+    -->
+
+    <!-- 3
+      一个vm身上包含了很多个和vc对象
+      全部 vc都储存在了vm的 $children 属性上(他是一个数组)
+      如果存在组件嵌套那么父组件vc上也会有一个属性$children,并且里面也是一个数组存储了子组件vc
+    -->
+  </div>
+
+  <script type="text/javascript">
+    const school = Vue.extend({
+      template: `
+        <div>
+          <h2>{{schoolName}}</h2>
+          <h2>{{address}}</h2>
+        </div>
+      `,
+      data () {
+        return {
+          schoolName: '华南师范大学',
+          address: '佛山南海'
+        }
+      }
+    })
+    const vm = new Vue({
+      el: '#app',
+      components: {
+        school
+      }
+    });
+    console.log(vm)
+  </script>
+</body>
+
+</html>
