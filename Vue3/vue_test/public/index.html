@@ -1,0 +1,42 @@
+<!--
+ * @Author: superman1006 1402788264@qq.com
+ * @Date: 2022-11-19 11:42:16
+ * @LastEditors: superman1006 1402788264@qq.com
+ * @LastEditTime: 2022-11-19 12:40:49
+ * @FilePath: \Vue_PROJECT\Vue3\vue_test\public\index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <!-- 下面这行代表针对IE浏览器，让IE浏览器用最高级别的渲染方式去渲染页面 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- 开启移动端的理想视口 -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- 配置页签图标，后面的 <%= BASE_URL %> 代表的是public路径-->
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <!-- 配置网页标题 -->
+  <!-- title里的内容代表他会找到pack.json文件的name属性 -->
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+</head>
+
+<body>
+  <!-- 
+    如果你的浏览器不支持js时，那么他就会输出<noscript>的内容，
+    如果支持js，那么nosrcipt的东西就不会被渲染
+  -->
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+
+  <!-- 容器！！！ -->
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>

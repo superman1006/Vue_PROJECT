@@ -9,17 +9,17 @@
 <template>
   <!-- 组件的结构 -->
   <div>
-    <h2>{{StudentName}}</h2>
+    <h2>{{name}}</h2>
     <h2>{{age}}</h2>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Student",
+  name: "MyStudent",
   data () {
     return {
-      StudentName: "chen-lv",
+      name: "chen-lv",
       age: 19,
     };
   },
