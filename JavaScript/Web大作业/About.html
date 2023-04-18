@@ -3,88 +3,101 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 引入Bootstrap的CSS文件 -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- 引入自定义的CSS文件 -->
+  <meta name="description" content="My Personal Website">
+  <meta name="author" content="ChenLv">
+  <title>About Me</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="reference/Bootstrap.css">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="About.css">
-  <link href="About.css" rel="stylesheet" type="text/css">
-  <title>About Me - Detailed Information</title>
 </head>
 
 <body>
-  <!-- 导航栏 -->
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-          aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <!-- 网站Logo -->
-        <a class="navbar-brand" href="#">Chen Lv</a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <!-- 导航栏选项 -->
-          <li><a href="introduction.html">Home</a></li>
-          <li class="active"><a href="#">About Me</a></li>
-          <li><a href="Chat.html">Chat</a></li>
-        </ul>
-      </div><!--/.nav-collapse -->
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">My Personal Website</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="introduction.html">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">About Me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Chat.html">Chat</a>
+        </li>
+      </ul>
     </div>
   </nav>
 
-  <!-- 主要内容 -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <!-- 个人照片 -->
-        <img src="a.jpg" alt="Your Photo" class="img-responsive">
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>About Me</h1>
+          <hr>
+        </div>
       </div>
-      <div class="col-md-8">
-        <h1>About Me</h1>
-        <p>Here is some detailed information about me:</p>
-        <ul>
-          <!-- 显示个人信息 -->
-          <li><strong>Name:</strong> ChenLv</li>
-          <li><strong>Age:</strong> 19-year-old</li>
-          <li><strong>Height:</strong> 181.0 cm</li>
-          <li><strong>Weight:</strong> 74.4 kg</li>
-          <li><strong>Hobbies:</strong> Dancing and Basketball</li>
-        </ul>
-        <p>Here are some more details about me:</p>
-        <ul>
-          <!-- 显示个人详细信息 -->
-          <li><strong>Academic Interests:</strong> Your Academic Interests</li>
-          <li><strong>Courses Taken:</strong> Your Courses Taken</li>
-          <li><strong>Topics of Interest:</strong> Your Topics of Interest</li>
-          <li><strong>Leisure Activities:</strong> Your Leisure Activities</li>
-          <li><strong>Achievements:</strong> Your Achievements</li>
-        </ul>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Professional Interests</h3>
+          <p>As a student majoring in computer science, I am very interested in software engineering, database
+            management, and web development. I enjoy programming and love to learn about new technologies that can
+            improve the way we live and work.</p>
+        </div>
+        <div class="col-md-6">
+          <h3>Academic Background</h3>
+          <p>During my academic career, I have taken a variety of computer science courses, including programming,
+            algorithms, data structures, and databases. I am also interested in mathematics and physics, and have taken
+            courses in calculus, linear algebra, and mechanics.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Interests and Hobbies</h3>
+          <ul>
+            <li>Coding and programming</li>
+            <li>Hiking and exploring nature</li>
+            <li>Basketball and other sports</li>
+            <li>Photography and videography</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h3>Achievements and Awards</h3>
+          <ul>
+            <li>Won first place in a regional coding competition</li>
+            <li>Published an article in a student research journal</li>
+            <li>Received a scholarship for academic excellence</li>
+            <li>Completed a difficult hiking trail in record time</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-
-  <!-- 底部信息 -->
+  </section>
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <p>Copyright ©ChenLv 2023.
-            <br>All rights reserved.
+          <p>Copyright © 2023
+            <a href="#">ChenLv</a> All rights reserved.
           </p>
         </div>
       </div>
     </div>
-
   </footer>
-  <!-- 引入jQuery和Bootstrap的JS文件 -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <!-- Popper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

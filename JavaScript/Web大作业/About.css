@@ -1,78 +1,86 @@
-/* 全局样式 */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+/* About section */
+.about-section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #f5f5f5;
 }
 
-/* 导航栏样式 */
-.navbar {
-  margin-bottom: 0;
-  border-radius: 0;
-  background-color: #fff;
-  border: none;
-}
-
-.navbar-brand {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.navbar-nav>li>a {
-  color: #555;
-}
-
-.navbar-nav>li>a:hover,
-.navbar-nav>li>a:focus {
-  background-color: #f2f2f2;
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #555;
-}
-
-/* 主要内容样式 */
-.container {
-  background-color: #fff;
-  margin-top: 20px;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px #ccc;
-}
-
-h1 {
-  font-size: 36px;
-  font-weight: bold;
-  margin-top: 0;
-}
-
-ul {
-  margin-top: 0;
-}
-
-li {
-  margin-bottom: 10px;
-}
-
-img {
-  max-width: 50%;
-  width: 200px;
-  height: 200px;
-  margin-left: 70px;
-}
-
-/* 底部信息样式 */
-footer {
-  background-color: #2E8B57;
-  color: #fff;
-  padding: 20px;
+.about-section h1 {
+  font-size: 48px;
+  font-weight: 700;
   text-align: center;
+  color: #333;
+  margin-bottom: 60px;
+}
+
+.about-section hr {
+  border-color: #333;
+  margin: 30px auto;
+}
+
+.about-section h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.about-section p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.about-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 30px;
+}
+
+.about-section li {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.about-section li:before {
+  content: "\f00c";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 16px;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Footer section */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 80px;
+}
+
+footer p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 0;
 }
 
 footer a {
   color: #fff;
+  text-decoration: none;
 }
 
-footer a:hover,
-footer a:focus {
-  color: #2E8B57;
+footer a:hover {
+  color: #ccc;
 }
+
+/* .about-section：设置About部分的背景色、顶部和底部内边距。 .about-section h1：设置标题样式，包括字体大小、加粗、居中和颜色。 .about-section hr：设置水平分割线样式，包括颜色和居中。 .about-section h3：设置子标题样式，包括字体大小、加粗和颜色。 .about-section p：设置正文段落样式，包括字体大小、行高和颜色。 .about-section ul：设置无序列表样式，包括去除默认样式、左侧内边距和底部外边距。 .about-section li：设置列表项样式，包括字体大小、行高、颜色、底部外边距、相对定位和左侧内边距。 .about-section li:before：添加一个 Font Awesome 图标作为列表项标志，包括图标内容、字体和颜色，相对定位和垂直居中。 footer：设置页脚样式，包括背景色、颜色和内边 */
